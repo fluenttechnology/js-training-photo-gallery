@@ -1,0 +1,67 @@
+[{
+    "name": "Αρισταίος",
+    "surname": "Αντωνιάδης",
+    "gender": "male",
+    "region": "Greece",
+    "age": 32,
+    "title": "mr",
+    "phone": "(981) 704 6379",
+    "birthday": {
+        "dmy": "16\/06\/1986",
+        "mdy": "06\/16\/1986",
+        "raw": 519326931
+    },
+    "email": "Αρισταίος_86@example.com",
+    "password": "Αντωνιάδης86)%",
+    "credit_card": {
+        "expiration": "4\/25",
+        "number": "3211-8262-8151-1707",
+        "pin": 4397,
+        "security": 319
+    },
+    "photo": "https:\/\/uinames.com\/api\/photos\/male\/2.jpg"
+}, {
+    "name": "Barbara",
+    "surname": "Lynch",
+    "gender": "female",
+    "region": "United States",
+    "age": 29,
+    "title": "mrs",
+    "phone": "(332) 564 3301",
+    "birthday": {
+        "dmy": "05\/02\/1989",
+        "mdy": "02\/05\/1989",
+        "raw": 602670843
+    },
+    "email": "barbara89@example.com",
+    "password": "Lynch89*^",
+    "credit_card": {
+        "expiration": "9\/25",
+        "number": "5137-9500-7507-5319",
+        "pin": 1594,
+        "security": 696
+    },
+    "photo": "https:\/\/uinames.com\/api\/photos\/female\/13.jpg"
+}, {
+    "name": "Liviu",
+    "surname": "Cătunean",
+    "gender": "male",
+    "region": "Romania",
+    "age": 31,
+    "title": "mr",
+    "phone": "(202) 919 1328",
+    "birthday": {
+        "dmy": "17\/04\/1987",
+        "mdy": "04\/17\/1987",
+        "raw": 545643861
+    },
+    "email": "liviu-87@example.com",
+    "password": "Cătunean87_}",
+    "credit_card": {
+        "expiration": "10\/21",
+        "number": "2795-4197-6215-1898",
+        "pin": 2668,
+        "security": 633
+    },
+    "photo": "https:\/\/uinames.com\/api\/photos\/male\/8.jpg"
+}]
