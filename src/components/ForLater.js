@@ -5,9 +5,9 @@ import "./ForLater.css";
 const ForLater = ( { saved } ) => <section className="people-for-later">
 
   <h3>For later</h3>
-  {saved.map( person =>
+  {saved.map( ( person, i ) =>
 
-    <PersonDetails person={person} />
+    <PersonDetails key={i} person={person} />
 
   )}
 

@@ -29,9 +29,9 @@ class People extends Component {
         <p>
           <button onClick={() => this.callAPI()}>Generate</button>
         </p>
-        {this.state.data.map( person =>
+        {this.state.data.map( ( person, i ) =>
 
-            <PersonDetails person={person}>
+            <PersonDetails key={i} person={person}>
 
                 <p><button onClick={() => this.props.handleSaved(person)}>Save</button></p>
 
