@@ -4,20 +4,45 @@ import './App.css';
 import People from "./components/People";
 import ForLater from "./components/ForLater";
 
+
+import { saveForLater, fetchForLater } from "./agents/my-api";
+
 class App extends Component {
 
   constructor() {
 
     super();
     this.state = { saved: [] };
+    fetchForLater().then( resp => {
+
+      if ( !resp.ok ) { throw new Error( "Save failed :(" ); }
+      return resp.json();
+
+    } ).then( json => {
+
+      const saved = json.map( ( [ _, person ] ) => person );
+      this.setState( { saved } );
+
+    } );
 
   }
   handleSaved( person ) {
 
-    // do something useful with the person we want to save
-    const saved = this.state.saved;
-    saved.push( person );
-    this.setState( { saved } );
+    saveForLater( person ).then( resp => {
+
+      if ( !resp.ok ) { throw new Error( "Save failed :(" ); }
+
+    } ).then( () => {
+
+      const saved = this.state.saved;
+      saved.push( person );
+      this.setState( { saved } );
+
+    } ).catch( ex => {
+
+      alert( ex.message );
+
+    } );
 
   }
   render() {
@@ -27,11 +52,6 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-
-          <iframe title="my video" width="560" height="315" src="https://www.youtube.com/embed/KY0TZQTwwbk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-        </p>
         <ForLater saved={ this.state.saved} />
         <People handleSaved={person => this.handleSaved( person )} />
 
