@@ -14,7 +14,13 @@ class People extends Component {
 
       fetch( "https://uinames.com/api/?ext&amount=3" )
         .then( response => response.json() )
-        .then( data => this.setState( { data } ) );
+        .then( data => this.setState( { data } ) )
+        .catch( ex => {
+
+          console.log( "Error occurred calling uinames" );
+          console.log( ex );
+
+        } );
 
     }
     renderLoading() {

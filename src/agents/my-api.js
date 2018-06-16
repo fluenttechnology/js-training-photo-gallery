@@ -1,6 +1,6 @@
-export function saveForLater( person ) {
+export async function saveForLater( person ) {
 
-    return fetch( "http://localhost:3001/for-later", {
+    const resp = await fetch( "http://localhost:3001/for-later", {
 
         body: JSON.stringify( person ),
         method: "POST",
@@ -10,11 +10,14 @@ export function saveForLater( person ) {
         mode: "cors"
 
     } );
-
+    if ( !resp.ok ) { throw new Error( "Save failed :(" ); }
 }
 
-export function fetchForLater() {
+export async function fetchForLater() {
 
-    return fetch( "http://localhost:3001/for-later" );
+    const resp = await fetch( "http://localhost:3001/for-later" );
+    if ( !resp.ok ) { throw new Error( "Save failed :(" ); }
+    const json = await resp.json();
+    return json;
 
 }

@@ -7,44 +7,40 @@ import ForLater from "./components/ForLater";
 
 import { saveForLater, fetchForLater } from "./agents/my-api";
 
+async function initialise( app ) {
+
+  const json = await fetchForLater()
+  const saved = json.map( ( [ _, person ] ) => person );
+  app.setState( { saved } );
+
+}
+
 class App extends Component {
 
   constructor() {
 
     super();
     this.state = { saved: [] };
-    fetchForLater().then( resp => {
-
-      if ( !resp.ok ) { throw new Error( "Save failed :(" ); }
-      return resp.json();
-
-    } ).then( json => {
-
-      const saved = json.map( ( [ _, person ] ) => person );
-      this.setState( { saved } );
-
-    } );
+    initialise( this );
 
   }
-  handleSaved( person ) {
+  async handleSaved( person ) {
 
-    saveForLater( person ).then( resp => {
+    try {
 
-      if ( !resp.ok ) { throw new Error( "Save failed :(" ); }
-
-    } ).then( () => {
-
+      await saveForLater( person );
       const saved = this.state.saved;
       saved.push( person );
       this.setState( { saved } );
 
-    } ).catch( ex => {
+    } catch( ex ) {
 
       alert( ex.message );
 
-    } );
+    }
 
   }
+
   render() {
     return (
       <div className="App">
